@@ -64,6 +64,41 @@
         }
       }
 
+      .rx-weather-other-info-side {
+        display: flex;
+        flex-direction: column;
+        color: #5d5959;
+        height: 100%;
+        background-color: #69a0ec4d;
+
+        .rx-weather-other-info-side-box {
+          padding: 2rem;
+        }
+
+        .rx-weather-item {
+          display: flex;
+          width: 100%;
+          margin-top: 10px;
+
+          .rx-weather-item-right {
+            flex: 20;
+            display: flex;
+            justify-content: space-around;
+          }
+
+          .rx-weather-item-left {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex: 80;
+
+            .rx-weather-item-left-icon {
+              margin-right: 2rem;
+            }
+          }
+        }
+      }
+
       .rx-weather-type {
         position: absolute;
         top: 0;
