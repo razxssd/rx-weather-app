@@ -1,5 +1,13 @@
+$bg-color: #f5f5f5;
+$white: #fff;
+$gray: #5d5959;
+
 .rx-weather-app-container {
-  background-color: #f5f5f5;
+  --blue_300: #05349cc2;
+  --blue_150: #0095ff;
+  --gradient: linear-gradient(135deg, var(--blue_300) 10%, var(--blue_150) 100%);
+
+  background-color: $bg-color;
   height: 100vh;
 
   .rx-weather-content {
@@ -8,15 +16,14 @@
     justify-content: center;
     height: 100%;
     align-items: center;
+    flex-direction: column;
 
     .rx-weather-card {
-      --gradient: linear-gradient(135deg, #05349cc2 10%, #0095ff 100%);
-
       border-radius: 8px;
       position: relative;
       min-width: 600px;
       height: 450px;
-      background-color: white;
+      background-color: $white;
       box-shadow: 0px 0px 25px 1px rgb(50 50 50 / 10%);
       -webkit-animation: appear 500ms ease-out forwards;
       animation: appear 500ms ease-out forwards;
@@ -28,7 +35,7 @@
         top: 0;
         left: 0;
         background-image: var(--gradient);
-        border-radius: 25px;
+        border-radius: 10px;
         opacity: 0.8;
       }
       .rx-weather-side {
@@ -36,14 +43,14 @@
         height: 100%;
         border-radius: 25px;
         width: 300px;
-        background-color: #fff;
+        background-color: $white;
         -webkit-box-shadow: 0 0 20px -10px rgb(0 0 0 / 20%);
         box-shadow: 0 0 20px -10px rgb(0 0 0 / 20%);
         -webkit-transition: -webkit-transform 300ms ease;
         transition: -webkit-transform 300ms ease;
         -o-transition: transform 300ms ease;
-        transition: transform 300ms ease;
-        transition: transform 300ms ease, -webkit-transform 300ms ease;
+        transition: transform 300ms ease,
+        -webkit-transform 300ms ease;
         -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
         transform: translateZ(0) scale(1.02) perspective(1000px);
         float: left;
@@ -59,7 +66,7 @@
 
         .title {
           font-weight: 600;
-          color: white;
+          color: $white;
           font-size: 1.2rem;
         }
       }
@@ -67,9 +74,10 @@
       .rx-weather-other-info-side {
         display: flex;
         flex-direction: column;
-        color: #5d5959;
+        color: $gray;
         height: 100%;
-        background-color: #69a0ec4d;
+        background-color: $white;
+        border-radius: 8px;
 
         .rx-weather-other-info-side-box {
           padding: 2rem;
@@ -84,16 +92,20 @@
             flex: 20;
             display: flex;
             justify-content: space-around;
+            align-items: center;
           }
 
           .rx-weather-item-left {
             display: flex;
-            justify-content: space-between;
             width: 100%;
             flex: 80;
+            height: 100%;
+            align-items: center;
 
             .rx-weather-item-left-icon {
               margin-right: 2rem;
+              display: flex;
+              justify-content: flex-end;
             }
           }
         }
@@ -125,28 +137,23 @@
         flex-direction: column;
       }
     }
-  }
 
-  .weather-icon {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    top: 0;
-    float: right;
-    margin: 40px 40px 0 0;
-    animation: weather-icon-move 5s ease-in-out infinite;
-  }
+    .rx-weather-input-container {
+      margin-bottom: 5rem;
 
-  .sun {
-    background: #FFCD41;
-    border-radius: 50%;
-    box-shadow: rgba(255,255,0,0.1) 0 0 0 4px;
-    animation: light 800ms ease-in-out infinite alternate, weather-icon-move 5s ease-in-out infinite;
-  }
+      input {
+        background-color: $white;
+        border: none;
+        padding: 8px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom: 2px $white solid;
 
-  @keyframes weather-icon-move {
-    50% {
-      transform: translateY(-8px);
+        &:focus {
+          outline: none;
+          border-bottom: 2px var(--blue_150) solid;
+        }
+      }
     }
   }
 }
