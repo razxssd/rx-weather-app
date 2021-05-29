@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {WeatherService} from './weather.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'rx-weather-app';
+  searchInput = '';
+
+  constructor(
+    private weatherService: WeatherService
+  ) { }
+
+  onSubmit(): void {
+    this.weatherService.getWeatherByCity(this.searchInput);
+    console.log('searchInput: ', this.searchInput);
+    console.log('weatherService.weather: ', this.weatherService.weather);
+  }
 }
